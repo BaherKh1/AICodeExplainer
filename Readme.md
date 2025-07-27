@@ -2,7 +2,7 @@
 
 An AI-powered web application that explains code **step by step** using **Google Gemini API**.
 
-🌐 **Live Demo**: [aicodeexplainer-production.up.railway.app]
+🌐 **Live Demo**: [aicodeexplainer-production.up.railway.app](https://aicodeexplainer-production.up.railway.app)
 
 ---
 
