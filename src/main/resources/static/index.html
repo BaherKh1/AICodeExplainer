@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Code Explainer</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=vjUWq1Fa"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">AI Code Explainer</h1>
+
+    <textarea id="code" class="w-full p-2 border rounded mb-4" rows="8" placeholder="Paste your code here..."></textarea>
+
+    <div class="flex gap-2 mb-4 flex-wrap">
+      <button onclick="submitTask('explain')" class="bg-blue-500 text-white px-4 py-2 rounded">Explain</button>
+      <button onclick="submitTaskWithVoice('explain')" class="bg-purple-500 text-white px-4 py-2 rounded">Explain with Voice</button>
+      <button id="stop-voice-btn" onclick="stopVoice()" class="bg-red-500 text-white px-4 py-2 rounded hidden">Stop Voice</button>
+    </div>
+
+    <div id="chat-container" class="mb-4 max-h-80 overflow-y-auto border rounded p-2 bg-gray-50"></div>
+  </div>
+</body>
+</html>
