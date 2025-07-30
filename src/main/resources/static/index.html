@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- TailwindCSS already included -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
   <meta charset="UTF-8">
-  <title>AI Code Explainer</title>
+  <title>⚡ AI Code Explainer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="script.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=vjUWq1Fa"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+    }
+    @keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end);
+}
+  </style>
 </head>
-<body class="bg-gray-100 p-6">
-  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold mb-4">AI Code Explainer</h1>
+<body class="bg-gradient-to-br from-gray-900 to-black text-white min-h-screen flex items-center justify-center p-4">
 
-    <textarea id="code" class="w-full p-2 border rounded mb-4" rows="8" placeholder="Paste your code here..."></textarea>
+  <div class="w-full max-w-4xl bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8 shadow-xl">
+    <h1 class="text-4xl text-cyan-400 text-center font-bold tracking-wide mb-6">⚡ AI Code Explainer</h1>
 
-    <div class="flex gap-2 mb-4 flex-wrap">
-      <button onclick="submitTask('explain')" class="bg-blue-500 text-white px-4 py-2 rounded">Explain</button>
-      <button onclick="submitTaskWithVoice('explain')" class="bg-purple-500 text-white px-4 py-2 rounded">Explain with Voice</button>
-      <button id="stop-voice-btn" onclick="stopVoice()" class="bg-red-500 text-white px-4 py-2 rounded hidden">Stop Voice</button>
+    <textarea id="code" class="w-full h-40 p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-cyan-500 mb-6 resize-none" placeholder="Paste your code here..."></textarea>
+
+    <div class="flex flex-wrap gap-3 justify-center mb-6">
+      <button onclick="submitTask('explain')" class="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg shadow-lg transition">
+        🧠 Explain
+      </button>
+      <button onclick="submitTaskWithVoice('explain')" class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-2 rounded-lg shadow-lg transition">
+        🔊 Explain w/ Voice
+      </button>
+      <button id="stop-voice-btn" onclick="stopVoice()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg shadow-lg transition hidden">
+        ⏹ Stop Voice
+      </button>
     </div>
 
-    <div id="chat-container" class="mb-4 max-h-80 overflow-y-auto border rounded p-2 bg-gray-50"></div>
+    <div id="chat-container" class="h-80 overflow-y-auto bg-gray-900 border border-gray-700 p-4 rounded-lg space-y-4">
+      <!-- AI/User chat messages will go here -->
+    </div>
   </div>
+
 </body>
 </html>

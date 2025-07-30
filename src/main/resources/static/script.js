@@ -51,24 +51,34 @@ function addMessage(role, text) {
   const container = document.getElementById("chat-container");
 
   const messageDiv = document.createElement("div");
-  messageDiv.className = role === "user" ? "text-right mb-2" : "text-left mb-2";
+  messageDiv.className = role === "user" ? "text-right" : "text-left";
 
   const bubble = document.createElement("div");
   bubble.className = role === "user"
-    ? "inline-block bg-blue-500 text-white px-4 py-2 rounded-lg"
-    : "inline-block bg-gray-200 text-black px-4 py-2 rounded-lg";
+    ? "inline-block max-w-xl bg-cyan-600 text-white px-4 py-3 rounded-2xl shadow-md whitespace-pre-wrap"
+    : "inline-block max-w-xl bg-gray-700 text-white px-4 py-3 rounded-2xl shadow-md prose prose-invert prose-sm";
 
-  bubble.innerText = text;
+  if (role === "assistant") {
+    // Render markdown
+    bubble.innerHTML = marked.parse(text);
+    Prism.highlightAll();
+  } else {
+    bubble.innerText = text;
+  }
+
   messageDiv.appendChild(bubble);
   container.appendChild(messageDiv);
   container.scrollTop = container.scrollHeight;
 }
 
+
 function updateLastAssistantMessage(text) {
   const container = document.getElementById("chat-container");
   const lastAssistant = Array.from(container.querySelectorAll(".text-left .inline-block")).pop();
-  if (lastAssistant) lastAssistant.innerText = text;
-}
+  if (lastAssistant) {
+    lastAssistant.innerHTML = marked.parse(text);
+    Prism.highlightAll();
+  }}
 
 function speakText(text) {
   const stopBtn = document.getElementById("stop-voice-btn");
